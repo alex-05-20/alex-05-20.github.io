@@ -221,6 +221,39 @@ section.chap{padding:95px 22px;position:relative;z-index:5;}
 .gifts-note{text-align:center;font-family:'Handlee',cursive;color:var(--ink-soft);font-size:1.02rem;margin-top:34px;max-width:480px;margin-left:auto;margin-right:auto;line-height:1.55;}
 .gifts-note .accent{color:var(--rose-deep);font-weight:bold;}
 
+.date-section{background:linear-gradient(180deg, white 0%, var(--rose-soft) 140%);}
+.date-card{
+  max-width:440px;margin:0 auto;background:white;border-radius:26px;padding:32px 26px 30px;
+  box-shadow:0 20px 46px rgba(120,90,160,.16), 0 5px 14px rgba(249,78,126,.1);
+  border:2.5px solid var(--rose-soft);text-align:center;
+}
+.date-card .dc-emoji{font-size:2.6rem;display:block;margin-bottom:6px;}
+.date-card label{
+  display:block;text-align:left;font-family:'Sour Gummy',cursive;font-weight:700;
+  font-size:.9rem;color:var(--ink);margin:16px 0 7px;
+}
+.date-card input[type="date"], .date-card select, .date-card textarea{
+  width:100%;font-family:'Handlee',cursive;font-size:1rem;color:var(--ink);
+  border:2px solid var(--rose-soft);border-radius:14px;padding:11px 14px;background:var(--blush);
+  outline:none;transition:border-color .2s;
+}
+.date-card input[type="date"]:focus, .date-card select:focus, .date-card textarea:focus{border-color:var(--rose);}
+.date-card textarea{resize:vertical;min-height:70px;font-size:.95rem;}
+.date-send-btn{
+  margin-top:22px;width:100%;background:linear-gradient(135deg,#FF9BBB,var(--rose-deep));color:white;
+  font-family:'DynaPuff',cursive;padding:14px 20px;border-radius:999px;border:3px solid white;
+  box-shadow:0 6px 0 var(--rose-darker), 0 11px 24px rgba(209,58,102,.32);cursor:pointer;
+  font-size:1.02rem;transition:all .18s;
+}
+.date-send-btn:hover{transform:translateY(-2px);box-shadow:0 8px 0 var(--rose-darker), 0 14px 28px rgba(209,58,102,.4);}
+.date-send-btn:active{transform:translateY(4px);box-shadow:0 2px 0 var(--rose-darker), 0 5px 10px rgba(209,58,102,.3);}
+.date-status{
+  margin-top:14px;font-family:'Caveat',cursive;font-size:1.15rem;font-weight:700;color:var(--rose-darker);
+  display:none;
+}
+.date-status.show{display:block;}
+.date-hint{margin-top:16px;font-family:'Handlee',cursive;font-size:.8rem;color:var(--ink-soft);opacity:.75;line-height:1.4;}
+
 .gift-locked{
   max-width:700px;margin:24px auto 0;background:linear-gradient(160deg,#3A2A4A,#241A30);border-radius:26px;
   padding:38px 24px;text-align:center;position:relative;overflow:hidden;
@@ -384,7 +417,7 @@ footer .meta{font-family:'Matemasie',cursive;font-size:11px;margin-top:18px;opac
   <div class="reveal-up">
     <div class="phone">
       <div class="lock-screen">
-        <img class="wall" src="images/wallpaper_photo.jpeg" alt="wallpaper photo">
+        <img class="wall" src="wallpaper_photo.jpeg" alt="wallpaper photo">
         <div class="wall-tint"></div>
         <div class="lock-top">
           <p class="lock-date">saturday, girlfriend day</p>
@@ -437,7 +470,7 @@ footer .meta{font-family:'Matemasie',cursive;font-size:11px;margin-top:18px;opac
     <div class="contact-card">
       <div class="contact-hero">
         <span class="contact-fav">💗</span>
-        <img class="contact-avatar" src="images/joyce_ingrid.jpeg" alt="Joyce Ingrid">
+        <img class="contact-avatar" src="joyce_ingrid.jpeg" alt="Joyce Ingrid">
         <p class="contact-name">MY LOVE 💗</p>
         <span class="contact-label">★ favorites · pinned · always ★</span>
       </div>
@@ -471,7 +504,7 @@ footer .meta{font-family:'Matemasie',cursive;font-size:11px;margin-top:18px;opac
       <span class="tl-dot">📲</span>
       <div class="tl-card">
         <span class="tl-chip">chapter 01</span>
-        <img src="images/first_hello.png" alt="the first hello" style="object-fit:contain;background:#111;">
+        <img src="first_hello.png" alt="the first hello" style="object-fit:contain;background:#111;">
         <span class="tl-date">24 sept 2023 · whatsapp</span>
         <p class="tl-title">the first hello</p>
         <p class="tl-cap">i stole your number to send you Analysis lessons. worth it, ten times over.</p>
@@ -482,7 +515,7 @@ footer .meta{font-family:'Matemasie',cursive;font-size:11px;margin-top:18px;opac
       <span class="tl-dot">💞</span>
       <div class="tl-card">
         <span class="tl-chip">chapter 02</span>
-        <img src="images/first_date_a_KMC.jpeg" alt="the first date at KMC">
+        <img src="first_date_a_KMC.jpeg" alt="the first date at KMC">
         <span class="tl-date">10 june 2024 · kmc</span>
         <p class="tl-title">the first date</p>
         <p class="tl-cap">the day you said yes to being my girlfriend and part of my life. best decision either of us made.</p>
@@ -493,7 +526,7 @@ footer .meta{font-family:'Matemasie',cursive;font-size:11px;margin-top:18px;opac
       <span class="tl-dot">💋</span>
       <div class="tl-card">
         <span class="tl-chip">chapter 03</span>
-        <img src="images/first_hugs_and_kisses.jpg" alt="first hugs and kisses">
+        <img src="first_hugs_and_kisses.jpg" alt="first hugs and kisses">
         <span class="tl-date">18 sept 2024</span>
         <p class="tl-title">first hugs, first kisses</p>
         <p class="tl-cap">that's the exact moment i knew. right there.</p>
@@ -504,7 +537,7 @@ footer .meta{font-family:'Matemasie',cursive;font-size:11px;margin-top:18px;opac
       <span class="tl-dot">🎓</span>
       <div class="tl-card">
         <span class="tl-chip">chapter 04</span>
-        <img src="images/finished_prepa.jpeg" alt="finished Prepa">
+        <img src="finished_prepa.jpeg" alt="finished Prepa">
         <span class="tl-date">june 2025</span>
         <p class="tl-title">we finished Prepa</p>
         <p class="tl-cap">we chased our goals side by side and made it out together. proud of us.</p>
@@ -515,7 +548,7 @@ footer .meta{font-family:'Matemasie',cursive;font-size:11px;margin-top:18px;opac
       <span class="tl-dot">🇫🇷</span>
       <div class="tl-card">
         <span class="tl-chip">chapter 05</span>
-        <img src="images/travelled_to_france.jpeg" alt="travelled to France">
+        <img src="travelled_to_france.jpeg" alt="travelled to France">
         <span class="tl-date">sept 2025</span>
         <p class="tl-title">our trip to France</p>
         <p class="tl-cap">new place, same us. instant favorite memory.</p>
@@ -526,7 +559,7 @@ footer .meta{font-family:'Matemasie',cursive;font-size:11px;margin-top:18px;opac
       <span class="tl-dot">🎀</span>
       <div class="tl-card today">
         <span class="tl-chip pink">today</span>
-        <img src="images/today__girlfriend.jpeg" alt="today, girlfriend day">
+        <img src="today__girlfriend.jpeg" alt="today, girlfriend day">
         <span class="tl-date">girlfriend day</span>
         <p class="tl-title">still together, loving more than ever</p>
         <p class="tl-cap">still the best chapter so far.</p>
@@ -604,6 +637,41 @@ footer .meta{font-family:'Matemasie',cursive;font-size:11px;margin-top:18px;opac
   <p class="gifts-note">consider this your official notice: <span class="accent">something soft, something blooming, and something waiting are all headed your way.</span> keep your phone close. 💗</p>
 </section>
 
+<!-- 06 DATE NIGHT PICKER -->
+<section class="chap date-section" id="datenight">
+  <div class="chap-head reveal-up">
+    <span class="chap-tag">✦ 06 · your call ✦</span>
+    <h2 class="chap-title">pick <em>our</em> next date night 📅</h2>
+    <p class="chap-lead">
+      whenever works for you, works for me.<br>
+      <span class="accent">just say the word and it's booked.</span>
+    </p>
+  </div>
+
+  <div class="reveal-up date-card">
+    <span class="dc-emoji anim-heart">💌</span>
+    <label for="dn-date">pick a date</label>
+    <input type="date" id="dn-date">
+
+    <label for="dn-idea">what should we do? (optional)</label>
+    <select id="dn-idea">
+      <option value="you choose 💗">surprise me — you choose</option>
+      <option value="dinner date 🍽️">dinner date</option>
+      <option value="movie night 🎬">movie night</option>
+      <option value="a walk somewhere pretty 🌷">a walk somewhere pretty</option>
+      <option value="cook together at home 🍳">cook together at home</option>
+      <option value="something new & adventurous ✨">something new & adventurous</option>
+    </select>
+
+    <label for="dn-note">anything else to add? (optional)</label>
+    <textarea id="dn-note" placeholder="e.g. can't wait for this one 🥹"></textarea>
+
+    <button class="date-send-btn" onclick="sendDateNight()">send it to him 💌</button>
+    <p class="date-status" id="dn-status"></p>
+    <p class="date-hint">this opens your email app with everything filled in — just hit send there to confirm 💗</p>
+  </div>
+</section>
+
 <!-- FINALE -->
 <section class="chap finale-section" id="finale">
   <div class="finale-inner">
@@ -633,7 +701,7 @@ footer .meta{font-family:'Matemasie',cursive;font-size:11px;margin-top:18px;opac
   <span class="big-heart">🎀</span>
   <p class="made">made for exactly one girl</p>
   <p class="signed">— the boy whose phone is full of you ♥</p>
-  <p class="meta"> HAPPY GIRLFRIEND DAY MY LOVE </p>
+  <p class="meta">GIRLFRIEND DAY · EDITION OF ONE</p>
 </footer>
 
 <script>
