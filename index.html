@@ -369,6 +369,27 @@ footer .meta{font-family:'Matemasie',cursive;font-size:11px;margin-top:18px;opac
 ::-webkit-scrollbar{width:12px;}
 ::-webkit-scrollbar-track{background:var(--cream);}
 ::-webkit-scrollbar-thumb{background:linear-gradient(180deg,var(--rose),#FF9BBB);border-radius:6px;border:3px solid var(--cream);}
+
+.music-toggle{
+  position:fixed;bottom:22px;right:22px;z-index:300;width:58px;height:58px;border-radius:50%;
+  background:linear-gradient(135deg,#FF9BBB,var(--rose-deep));border:3px solid white;cursor:pointer;
+  box-shadow:0 8px 22px rgba(209,58,102,.35);display:flex;align-items:center;justify-content:center;
+  font-size:1.5rem;transition:transform .2s;
+}
+.music-toggle:hover{transform:scale(1.08);}
+.music-toggle:active{transform:scale(.94);}
+.music-toggle.playing{animation:heartbeat 1.8s ease-in-out infinite;}
+.music-hint{
+  position:fixed;bottom:88px;right:22px;z-index:300;background:white;color:var(--ink);
+  font-family:'Handlee',cursive;font-size:.85rem;padding:8px 14px;border-radius:14px;
+  box-shadow:0 6px 16px rgba(120,90,160,.2);opacity:0;pointer-events:none;transition:opacity .3s;
+  max-width:170px;text-align:center;
+}
+.music-hint.show{opacity:1;}
+@media (max-width:620px){
+  .music-toggle{bottom:16px;right:16px;width:50px;height:50px;font-size:1.3rem;}
+  .music-hint{bottom:74px;right:16px;}
+}
 </style>
 </head>
 <body>
@@ -386,14 +407,21 @@ footer .meta{font-family:'Matemasie',cursive;font-size:11px;margin-top:18px;opac
 
 <div id="fx"></div>
 
+<!-- background music: Ed Sheeran - Perfect (official video, audio only) -->
+<button class="music-toggle" id="musicToggle" onclick="toggleMusic()" aria-label="play our song">🎵</button>
+<p class="music-hint" id="musicHint">tap for our song 🎶</p>
+<div style="position:fixed;width:1px;height:1px;overflow:hidden;opacity:0;pointer-events:none;">
+  <div id="ytPlayer"></div>
+</div>
+
 <!-- HERO -->
 <section class="hero">
   <div class="hero-wrap">
     <span class="hero-emoji anim-float">💗</span>
     <h1>
-      <span class="soft">Happy</span><br>
-      <span class="grad">Girlfriend Day,</span><br>
-      <span class="soft crown-word">MY LOVE💗</span>
+      <span class="soft">happy</span><br>
+      <span class="grad">girlfriend day,</span><br>
+      <span class="soft crown-word">MY LOVE</span>
     </h1>
     <div class="name-pill">— yes you, Joyce Ingrid 🌷 —</div>
     <p class="hero-sub">
@@ -701,7 +729,7 @@ footer .meta{font-family:'Matemasie',cursive;font-size:11px;margin-top:18px;opac
   <span class="big-heart">🎀</span>
   <p class="made">made for exactly one girl</p>
   <p class="signed">— the boy whose phone is full of you ♥</p>
-  <p class="meta">Happy GIRLFRIEND DAY my love 💗</p>
+  <p class="meta">GIRLFRIEND DAY · EDITION OF ONE</p>
 </footer>
 
 <script>
@@ -770,6 +798,52 @@ function confettiPop() {
       setTimeout(() => el.remove(), 5000);
     }, i * 60);
   }
+}
+
+// ============ BACKGROUND MUSIC (Ed Sheeran - Perfect) ============
+let ytPlayer;
+let musicPlaying = false;
+
+const ytTag = document.createElement('script');
+ytTag.src = "https://www.youtube.com/iframe_api";
+document.head.appendChild(ytTag);
+
+function onYouTubeIframeAPIReady() {
+  ytPlayer = new YT.Player('ytPlayer', {
+    height: '1',
+    width: '1',
+    videoId: '2Vv-BfVoq4g',
+    playerVars: { autoplay: 0, controls: 0, disablekb: 1, modestbranding: 1, rel: 0 },
+    events: {
+      onReady: () => {
+        // show a one-time hint that music is available
+        const hint = document.getElementById('musicHint');
+        setTimeout(() => hint.classList.add('show'), 1500);
+        setTimeout(() => hint.classList.remove('show'), 6000);
+      }
+    }
+  });
+}
+
+function toggleMusic() {
+  const btn = document.getElementById('musicToggle');
+  const hint = document.getElementById('musicHint');
+  if (!ytPlayer || typeof ytPlayer.playVideo !== 'function') return;
+
+  if (!musicPlaying) {
+    ytPlayer.unMute();
+    ytPlayer.setVolume(60);
+    ytPlayer.playVideo();
+    btn.textContent = '⏸️';
+    btn.classList.add('playing');
+    musicPlaying = true;
+  } else {
+    ytPlayer.pauseVideo();
+    btn.textContent = '🎵';
+    btn.classList.remove('playing');
+    musicPlaying = false;
+  }
+  hint.classList.remove('show');
 }
 
 // ============ DATE NIGHT → EMAIL ============
