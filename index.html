@@ -771,6 +771,41 @@ function confettiPop() {
     }, i * 60);
   }
 }
+
+// ============ DATE NIGHT → EMAIL ============
+function sendDateNight() {
+  const dateInput = document.getElementById('dn-date');
+  const ideaSelect = document.getElementById('dn-idea');
+  const noteInput  = document.getElementById('dn-note');
+  const status     = document.getElementById('dn-status');
+
+  if (!dateInput.value) {
+    status.textContent = "pick a date first 🥺";
+    status.classList.add('show');
+    return;
+  }
+
+  const rawDate = new Date(dateInput.value + 'T00:00:00');
+  const prettyDate = rawDate.toLocaleDateString('en-US', { weekday:'long', year:'numeric', month:'long', day:'numeric' });
+  const idea = ideaSelect.value;
+  const note = noteInput.value.trim();
+
+  const subject = "Date night: " + prettyDate + " 💌";
+  let body = "Joyce picked our next date night!\n\n";
+  body += "Date: " + prettyDate + "\n";
+  body += "Idea: " + idea + "\n";
+  if (note) body += "Note from her: " + note + "\n";
+  body += "\nsent from our girlfriend day page 🎀";
+
+  const mailto = "mailto:koudjoualex2021@gmail.com"
+    + "?subject=" + encodeURIComponent(subject)
+    + "&body=" + encodeURIComponent(body);
+
+  window.location.href = mailto;
+
+  status.textContent = "opening your email app… hit send there to confirm 💌";
+  status.classList.add('show');
+}
 </script>
 </body>
 </html>
